@@ -12,7 +12,7 @@ public class CyclicSort {
 	private void sortInPlace(int[] array){
 		int i = 0, temp;
 		while(i < array.length){
-			if(array[i] != i+1) {
+			if(array[i] != array[array[i]-1]) {
 				temp = array[array[i]-1];
 				array[array[i]-1] = array[i];
 				array[i] = temp;
