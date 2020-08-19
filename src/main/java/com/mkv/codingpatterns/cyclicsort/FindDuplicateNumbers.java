@@ -6,9 +6,6 @@ The array has only one duplicate but it can be repeated multiple times.
 Find that duplicate number without using any extra space.
 You are, however, allowed to modify the input array.
 */
-
-import java.util.Arrays;
-
 public class FindDuplicateNumbers {
 
 	private int findDuplicate(int[] array){
