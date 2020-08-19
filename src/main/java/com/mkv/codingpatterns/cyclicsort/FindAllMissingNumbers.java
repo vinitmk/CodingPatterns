@@ -7,7 +7,6 @@ Find all those missing numbers.
 */
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class FindAllMissingNumbers {
@@ -24,7 +23,7 @@ public class FindAllMissingNumbers {
 	}
 
 	private void sortInPlace(int[] array){
-		int i = 0, temp;
+		int i = 0;
 		while(i < array.length){
 			if(array[i] != array[array[i]-1]) {
 				swap(array, i, array[i]-1);
