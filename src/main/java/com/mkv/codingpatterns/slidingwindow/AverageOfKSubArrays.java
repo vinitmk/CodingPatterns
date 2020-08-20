@@ -1,5 +1,7 @@
 package com.mkv.codingpatterns.slidingwindow;
 
+/* Given an array, find the average of all contiguous subarrays of size ‘K’ in it. */
+
 import java.util.Arrays;
 
 public class AverageOfKSubArrays {
