@@ -1,5 +1,9 @@
 package com.mkv.codingpatterns.slidingwindow;
 
+/*
+Given a string, find the length of the longest substring which has no repeating characters.
+*/
+
 import java.util.HashMap;
 import java.util.Map;
 
