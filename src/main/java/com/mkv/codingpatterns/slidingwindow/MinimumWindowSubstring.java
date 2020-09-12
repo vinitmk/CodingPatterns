@@ -1,5 +1,7 @@
 package com.mkv.codingpatterns.slidingwindow;
 
+/*Given a string and a pattern, find the smallest substring in the given string which has all the characters of the given pattern.*/
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -7,8 +9,8 @@ public class MinimumWindowSubstring {
 
 
 	private String findSubString(String str, String pattern) {
-/*
-		int start = 0, match = 0, minLength = 0, subStringStart = 0;
+
+/*		int start = 0, match = 0, minLength = 0, subStringStart = 0;
 		char rightChar, leftChar;
 		Map<Character, Integer> patternMap = new HashMap<>();
 		for(char c: str.toCharArray())
@@ -16,6 +18,7 @@ public class MinimumWindowSubstring {
 
 		for(int end = 0; end < str.length(); end++) {
 			rightChar = str.charAt(end);
+			System.out.println("right "+ rightChar);
 			if(patternMap.containsKey(rightChar)) {
 				patternMap.put(rightChar, patternMap.get(rightChar)-1);
 				if(patternMap.get(rightChar) >= 0)
@@ -29,6 +32,7 @@ public class MinimumWindowSubstring {
 				}
 
 				leftChar = str.charAt(start++);
+				System.out.println("leftChar "+ leftChar);
 				if(patternMap.containsKey(leftChar)) {
 					if(patternMap.get(leftChar) == 0)
 						match--;
@@ -46,6 +50,7 @@ public class MinimumWindowSubstring {
 		// try to extend the range [windowStart, windowEnd]
 		for (int windowEnd = 0; windowEnd < str.length(); windowEnd++) {
 			char rightChar = str.charAt(windowEnd);
+
 			if (charFrequencyMap.containsKey(rightChar)) {
 				charFrequencyMap.put(rightChar, charFrequencyMap.get(rightChar) - 1);
 				if (charFrequencyMap.get(rightChar) >= 0) // count every matching of a character
