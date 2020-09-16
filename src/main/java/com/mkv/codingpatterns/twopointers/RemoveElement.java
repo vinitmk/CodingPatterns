@@ -3,6 +3,12 @@ package com.mkv.codingpatterns.twopointers;
 /*
 Given an unsorted array of numbers and a target ‘key’, remove all instances of ‘key’ in-place and
 return the new length of the array.
+
+Time and Space Complexity: The time complexity of the above algorithm will be O(N),
+where ‘N’ is the total number of elements in the given array.
+
+The algorithm runs in constant space O(1)O(1).
+
 */
 
 import java.util.Arrays;
