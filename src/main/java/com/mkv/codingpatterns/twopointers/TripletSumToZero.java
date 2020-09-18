@@ -11,31 +11,34 @@ import java.util.List;
 public class TripletSumToZero {
 
 	private List<List<Integer>> searchTriplets(int[] array) {
-
+		Arrays.sort(array);
 		List<List<Integer>> tripleList = new ArrayList<>();
 		for(int i = 0; i < array.length-2; i++) {
 			if(i > 0 && array[i] == array[i - 1])
 				continue;
-			findPair(array[i], i+1, array, tripleList);
+			findPair(array, -array[i],i+1, tripleList);
 		}
 		return tripleList;
 	}
 
-	private void findPair(int num, int start, int[] array, List<List<Integer>> tripleList) {
-		int sum, end = array.length-1;
+	private void findPair(int[] arr, int targetSum, int start, List<List<Integer>> tripleList) {
+		int currentSum, end = arr.length-1;
 		List<Integer> list = new ArrayList<>();
-		num *= -1;
-		//System.out.println(" sum " + num);
 		while(start < end) {
-			sum = array[start] + array[end];
-			if(num == sum) {
-				tripleList.add(Arrays.asList(-num, array[start], array[end]));
-				break;
-			}
-			else if(num < sum)
-				end--;
-			else
+			currentSum = arr[start] + arr[end];
+			if(targetSum == currentSum) {
+				tripleList.add(Arrays.asList(-targetSum, arr[start], arr[end]));
 				start++;
+				end--;
+				while(start < end && arr[start] == arr[start - 1])
+					start++;
+				while(start < end && arr[end] == arr[end + 1])
+					end--;
+			}
+			else if(targetSum > currentSum)
+				start++;
+			else
+				end--;
 		}
 	}
 
