@@ -7,7 +7,9 @@ You should populate the values of all nodes of each level from left to right in 
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Queue;
 
 class TreeNode {
@@ -30,7 +32,6 @@ public class LevelOrderTraversal {
 		while(!queue.isEmpty()) {
 			int levelSize = queue.size();
 			List<Integer> tempList = new ArrayList<>();
-			//list.add(Arrays.asList(tempNode.val));
 			for(int i = 0; i < levelSize; i++) {
 				tempNode = queue.poll();
 				if(null != tempNode) {
@@ -46,6 +47,16 @@ public class LevelOrderTraversal {
 		return list;
 	}
 
+	private void levelOrderUsingHashMap(TreeNode root, int level, Map<Integer, List<Integer>> map) {
+		if(null != root) {
+			map.putIfAbsent(level, new ArrayList<>());
+			map.get(level).add(root.val);
+			level++;
+			levelOrderUsingHashMap(root.left, level, map);
+			levelOrderUsingHashMap(root.right, level, map);
+		}
+	}
+
 
 	public static void main(String[] args) {
 		LevelOrderTraversal main = new LevelOrderTraversal();
@@ -58,6 +69,11 @@ public class LevelOrderTraversal {
 		root.right.right = new TreeNode(5);
 		List<List<Integer>> result = main.traversal(root);
 		System.out.println("Level order traversal: " + result);
+
+		Map<Integer, List<Integer>> map = new HashMap<>();
+		main.levelOrderUsingHashMap(root, 1, map);
+		for(int key: map.keySet())
+			System.out.println(map.get(key));
 	}
 
 
