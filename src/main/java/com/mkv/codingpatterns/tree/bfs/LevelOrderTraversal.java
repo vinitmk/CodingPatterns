@@ -22,15 +22,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 
-class TreeNode {
-	int val;
-	TreeNode left;
-	TreeNode right;
 
-	TreeNode(int x) {
-		val = x;
-	}
-}
 
 public class LevelOrderTraversal {
 
