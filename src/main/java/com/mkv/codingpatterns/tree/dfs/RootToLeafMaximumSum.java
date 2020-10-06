@@ -4,8 +4,6 @@ package com.mkv.codingpatterns.tree.dfs;
 Given a binary tree, find the root-to-leaf path with the maximum sum.
 */
 
-import java.util.List;
-
 public class RootToLeafMaximumSum {
 
 	private int findMaxSum(TreeNode root) {
