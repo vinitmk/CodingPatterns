@@ -62,6 +62,10 @@ public class TopologicalSort {
 					queue.add(children);
 			}
 		}
+
+		if(sortedList.size() != vertices)
+			return new ArrayList<>();
+
 		return sortedList;
 	}
 
