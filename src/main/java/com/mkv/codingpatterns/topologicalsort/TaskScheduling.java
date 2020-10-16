@@ -1,5 +1,21 @@
 package com.mkv.codingpatterns.topologicalsort;
 
+/*
+There are ‘N’ tasks, labeled from ‘0’ to ‘N-1’. Each task can have some prerequisite tasks which
+need to be completed before it can be scheduled. Given the number of tasks and a list of prerequisite pairs,
+find out if it is possible to schedule all the tasks.
+
+Time complexity #
+In step ‘d’, each task can become a source only once and each edge (prerequisite) will be accessed and removed once.
+Therefore, the time complexity of the above algorithm will be O(V+E), where ‘V’ is the total number of tasks and ‘E’
+is the total number of prerequisites.
+
+Space complexity #
+The space complexity will be O(V+E), since we are storing all of the prerequisites for each task in an adjacency list.
+
+
+*/
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
