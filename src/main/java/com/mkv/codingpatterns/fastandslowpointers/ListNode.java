@@ -1,7 +1,7 @@
 package com.mkv.codingpatterns.fastandslowpointers;
 
 class ListNode {
-	private int value;
+	int value;
 	ListNode next;
 
 	ListNode(int value) {
