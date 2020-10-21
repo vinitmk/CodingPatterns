@@ -12,6 +12,7 @@ The algorithm runs in constant space O(1).
 */
 
 public class LinkedListCycle {
+	private int cycleLength = 0;
 
 	private boolean hasCycle(ListNode head) {
 		ListNode slow = head;
@@ -20,14 +21,25 @@ public class LinkedListCycle {
 		while(fast != null && fast.next != null) {
 			slow = slow.next;
 			fast = fast.next.next;
-			if(fast == slow)
+			if(fast == slow) {
+				calculateCycleLength(slow);
 				return true;
+			}
 		}
 		return false;
 	}
 
-	public static void main(String[] args) {
+	private void calculateCycleLength(ListNode head) {
+		cycleLength = 0;
+		ListNode current = head;
+		do{
+			++cycleLength;
+			current = current.next;
+		} while(current != head);
+	}
 
+	public static void main(String[] args) {
+		boolean hasCycle;
 		LinkedListCycle main = new LinkedListCycle();
 
 		ListNode head = new ListNode(1);
@@ -36,12 +48,23 @@ public class LinkedListCycle {
 		head.next.next.next = new ListNode(4);
 		head.next.next.next.next = new ListNode(5);
 		head.next.next.next.next.next = new ListNode(6);
-		System.out.println("LinkedList has cycle: " + main.hasCycle(head));
+		hasCycle = main.hasCycle(head);
+		System.out.println("LinkedList has cycle: " + hasCycle);
+		if(hasCycle)
+			System.out.println("Cycle Length " + main.cycleLength);
+
 
 		head.next.next.next.next.next.next = head.next.next;
-		System.out.println("LinkedList has cycle: " + main.hasCycle(head));
+		hasCycle = main.hasCycle(head);
+		System.out.println("LinkedList has cycle: " + hasCycle);
+		if(hasCycle)
+			System.out.println("Cycle Length " + main.cycleLength);
+
 
 		head.next.next.next.next.next.next = head.next.next.next;
-		System.out.println("LinkedList has cycle: " + main.hasCycle(head));
+		hasCycle = main.hasCycle(head);
+		System.out.println("LinkedList has cycle: " + hasCycle);
+		if(hasCycle)
+			System.out.println("Cycle Length " + main.cycleLength);
 	}
 }
