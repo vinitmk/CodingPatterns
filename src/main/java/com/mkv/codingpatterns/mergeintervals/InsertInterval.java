@@ -15,8 +15,6 @@ all the merged intervals.
 
 */
 
-
-
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -37,8 +35,7 @@ public class InsertInterval {
     }
     mergedInterval.add(newInterval);
 
-    while (i < list.size())
-    	mergedInterval.add(list.get(i++));
+    while (i < list.size()) mergedInterval.add(list.get(i++));
 
     return mergedInterval;
   }
