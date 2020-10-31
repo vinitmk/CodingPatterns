@@ -20,25 +20,25 @@ import java.util.List;
 public class IntervalsIntersection {
 
   private Interval[] merge(Interval[] input1, Interval[] input2) {
-  	List<Interval> r = new ArrayList<>();
-  	int index1 = 0 , index2 = 0;
-  	while(index1 < input1.length && index2 < input2.length) {
+    List<Interval> r = new ArrayList<>();
+    int index1 = 0, index2 = 0;
+    while (index1 < input1.length && index2 < input2.length) {
 
-  		if((input1[index1].start >= input2[index2].start && input1[index1].start <= input2[index2].end)
-				|| (input2[index2].start >= input1[index1].start && input2[index2].start <= input1[index1].end)) {
-  			//System.out.println("Starts are : " + input1[index1].start +"  "+input2[index2].start);
-			//System.out.println("Ends are : " + input1[index1].end +"  "+input2[index2].end);
-			int start = Math.max(input1[index1].start, input2[index2].start);
-			int end = Math.min(input1[index1].end, input2[index2].end);
-			r.add(new Interval(start, end));
-		}
+      if ((input1[index1].start >= input2[index2].start
+              && input1[index1].start <= input2[index2].end)
+          || (input2[index2].start >= input1[index1].start
+              && input2[index2].start <= input1[index1].end)) {
+        // System.out.println("Starts are : " + input1[index1].start +"  "+input2[index2].start);
+        // System.out.println("Ends are : " + input1[index1].end +"  "+input2[index2].end);
+        int start = Math.max(input1[index1].start, input2[index2].start);
+        int end = Math.min(input1[index1].end, input2[index2].end);
+        r.add(new Interval(start, end));
+      }
 
-  		if(input1[index1].end < input2[index2].end)
-  			index1++;
-  		else
-  			index2++;
-	}
-  	return r.toArray(new Interval[0]);
+      if (input1[index1].end < input2[index2].end) index1++;
+      else index2++;
+    }
+    return r.toArray(new Interval[0]);
   }
 
   public static void main(String[] args) {
