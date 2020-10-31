@@ -1,5 +1,19 @@
 package com.mkv.codingpatterns.mergeintervals;
 
+/*
+Given a list of intervals, merge all the overlapping intervals to produce a list that has only mutually exclusive intervals.
+
+Time complexity #
+The time complexity of the above algorithm is O(N * logN), where ‘N’ is the total number of intervals.
+We are iterating the intervals only once which will take O(N), in the beginning though,
+since we need to sort the intervals, our algorithm will take O(N * logN).
+
+Space complexity #
+The space complexity of the above algorithm will be O(N) as we need to return a list containing all the merged intervals.
+We will also need O(N) space for sorting. For Java, depending on its version, Collection.sort() either uses Merge sort or Timsort,
+and both these algorithms need O(N) space. Overall, our algorithm has a space complexity of O(N).
+*/
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.LinkedList;
