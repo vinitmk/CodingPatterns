@@ -32,8 +32,7 @@ public class MinimumMeetingRooms {
     int meetingRoom = 0;
     for (Interval meeting : inputs) {
 
-      while (!minHeap.isEmpty() && meeting.start >= minHeap.peek().end)
-      	minHeap.poll();
+      while (!minHeap.isEmpty() && meeting.start >= minHeap.peek().end) minHeap.poll();
 
       minHeap.offer(meeting);
 
