@@ -24,29 +24,28 @@ import java.util.PriorityQueue;
 public class EmployeeFreeTime {
 
   private List<Interval> findEmployeeFreeTime(List<List<Interval>> avails) {
-	  List<Interval> result = new ArrayList<>();
+    List<Interval> result = new ArrayList<>();
 
-	  PriorityQueue<Interval> pq = new PriorityQueue<>(Comparator.comparingInt(a -> a.start));
-	  avails.forEach(pq::addAll);
-/*	  while (!pq.isEmpty()) {
-	  		Interval i = pq.poll();
-	      System.out.println("i = "+ i);
-	  }*/
+    PriorityQueue<Interval> pq = new PriorityQueue<>(Comparator.comparingInt(a -> a.start));
+    avails.forEach(pq::addAll);
+    /*	  while (!pq.isEmpty()) {
+    		Interval i = pq.poll();
+        System.out.println("i = "+ i);
+    }*/
 
-	  Interval temp = pq.poll();
-	  while(!pq.isEmpty()) {
-		  assert temp != null;
-		  if(temp.end < pq.peek().start) { // no intersect
-			  result.add(new Interval(temp.end, pq.peek().start));
-			  temp = pq.poll(); // becomes the next temp interval
-		  }else { // intersect or sub merged
-			  temp = temp.end < pq.peek().end ? pq.peek() : temp;
-			  pq.poll();
-		  }
-	  }
-	  return result;
+    Interval temp = pq.poll();
+    while (!pq.isEmpty()) {
+      assert temp != null;
+      if (temp.end < pq.peek().start) { // no intersect
+        result.add(new Interval(temp.end, pq.peek().start));
+        temp = pq.poll(); // becomes the next temp interval
+      } else { // intersect or sub merged
+        temp = temp.end < pq.peek().end ? pq.peek() : temp;
+        pq.poll();
+      }
+    }
+    return result;
   }
-
 
   public static void main(String[] args) {
 
